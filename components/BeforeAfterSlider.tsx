@@ -9,18 +9,19 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { assetPath } from "@/lib/paths";
 
 const pairs = [
   {
-    before: "/images/photo-bumper-before.jpg",
-    after: "/images/photo-bumper-after.jpg",
+    before: assetPath("/images/photo-bumper-before.jpg"),
+    after: assetPath("/images/photo-bumper-after.jpg"),
     label: "Бампер",
     title: "Повреждение бампера",
     text: "Трещины, царапины и нарушенная геометрия после удара. Мастер подскажет, ремонтировать бампер или менять.",
   },
   {
-    before: "/images/photo-rust-before.jpg",
-    after: "/images/photo-rust-after.jpg",
+    before: assetPath("/images/photo-rust-before.jpg"),
+    after: assetPath("/images/photo-rust-after.jpg"),
     label: "Порог / арка",
     title: "Коррозия порога и арки",
     text: "Ржавчина может быть глубже видимого слоя. После осмотра станет понятно, нужен локальный ремонт или замена элемента.",

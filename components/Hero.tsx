@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Camera, Clock3, MapPin, Phone, Star, Wrench } from "lucide-react";
 import Image from "next/image";
+import { assetPath } from "@/lib/paths";
 import { phoneDisplay, phoneHref, yandexMapsUrl } from "@/lib/seo";
 
 const specs = [
@@ -30,7 +31,7 @@ export function Hero() {
       className="industrial-section relative isolate min-h-[100svh] overflow-hidden bg-background pt-24 text-white md:pt-28"
     >
       <Image
-        src="/images/industrial-hero-bodyshop.jpg"
+        src={assetPath("/images/industrial-hero-bodyshop.jpg")}
         alt="Визуальный образ индустриального кузовного цеха"
         fill
         priority

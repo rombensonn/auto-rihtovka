@@ -18,6 +18,7 @@ import { ProcessSteps } from "@/components/ProcessSteps";
 import { Reviews } from "@/components/Reviews";
 import { ServiceCards } from "@/components/ServiceCards";
 import { StickyMobileBar } from "@/components/StickyMobileBar";
+import { assetPath } from "@/lib/paths";
 import { localBusinessJsonLd } from "@/lib/seo";
 
 const reasons = [
@@ -127,7 +128,7 @@ export default function Home() {
           <div className="section-shell grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div className="relative min-h-[420px] overflow-hidden rounded-lg">
               <Image
-                src="/images/industrial-paint-prep.jpg"
+                src={assetPath("/images/industrial-paint-prep.jpg")}
                 alt="Визуальный образ подготовки кузова к ремонту"
                 fill
                 sizes="(max-width: 1024px) 100vw, 560px"

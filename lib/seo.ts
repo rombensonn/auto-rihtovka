@@ -24,7 +24,7 @@ export const siteMetadata: Metadata = {
       "Кузовной ремонт, покраска авто, ремонт бамперов, замена порогов и восстановление пластика в Подольске.",
     images: [
       {
-        url: "/images/industrial-hero-bodyshop.jpg",
+        url: `${siteUrl}/images/industrial-hero-bodyshop.jpg`,
         width: 1200,
         height: 800,
         alt: "Кузовной ремонт автомобиля в Подольске",

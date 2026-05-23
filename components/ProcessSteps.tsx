@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Camera, CheckCircle2, ClipboardCheck, Wrench } from "lucide-react";
 import Image from "next/image";
+import { assetPath } from "@/lib/paths";
 
 const steps = [
   {
@@ -78,7 +79,7 @@ export function ProcessSteps() {
 
         <div className="steel-card corner-cut relative min-h-[420px] overflow-hidden">
           <Image
-            src="/images/industrial-inspection-panel.jpg"
+            src={assetPath("/images/industrial-inspection-panel.jpg")}
             alt="Визуальный образ проверки кузовной панели"
             fill
             sizes="(max-width: 1024px) 100vw, 560px"
