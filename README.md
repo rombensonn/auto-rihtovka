@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Авто_рихтовка
 
-## Getting Started
+Одностраничный лендинг для кузовного ремонта и покраски автомобилей в Подольске.
 
-First, run the development server:
+## Стек
+
+- Next.js 16, App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- API route `/api/lead` для заявок
+- Telegram Bot API при наличии env-переменных
+- Локальный fallback в `data/leads.json`
+
+## Запуск
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Локальный адрес по умолчанию: `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Переменные окружения
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Создайте `.env.local` в корне проекта:
 
-## Learn More
+```env
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+`TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` нужны только для отправки заявок в Telegram. Если они не заданы или Telegram недоступен, заявка сохраняется в `data/leads.json`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Для production замените `NEXT_PUBLIC_SITE_URL` на реальный домен. Если домен ещё не выбран, проект использует `http://localhost:3000`, чтобы не выдумывать публичный URL.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Как добавить фото
 
-## Deploy on Vercel
+В блоке до/после сейчас стоят сгенерированные реалистичные фотопримеры типовых задач. Когда появятся реальные фотографии работ сервиса, замените файлы в `public/images` с теми же именами:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `hero-car-repair.jpg` — запасной placeholder из первой версии
+- `photo-bumper-before.jpg` и `photo-bumper-after.jpg` — пара до/после для бампера
+- `photo-rust-before.jpg` и `photo-rust-after.jpg` — пара до/после для порога и арки
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Старые файлы `before-1.jpg`, `after-1.jpg`, `before-2.jpg` и `after-2.jpg` оставлены в проекте как резервные копии.
+
+Случайные стоковые фото лучше не использовать как реальные работы: блок до/после должен показывать именно результаты сервиса.
+
+Дополнительно в проекте есть тематические сгенерированные изображения для нового industrial-дизайна:
+
+- `industrial-hero-bodyshop.jpg` — первый экран
+- `industrial-inspection-panel.jpg` — блок процесса
+- `industrial-paint-prep.jpg` — блок сценариев восстановления
+
+Эти изображения используются как визуальная атмосфера сайта и не подписаны как реальные работы сервиса.
+
+## Проверка формы
+
+1. Запустите `npm run dev`.
+2. Откройте `http://localhost:3000`.
+3. Заполните имя минимум из 2 символов и телефон в российском формате, например `+7 (915) 047-00-05`.
+4. Отправьте форму.
+5. Если Telegram не подключён, проверьте новую запись в `data/leads.json`.
+
+API принимает `POST /api/lead`:
+
+```json
+{
+  "name": "Иван",
+  "phone": "+7 (915) 047-00-05",
+  "car": "Kia Rio",
+  "damage": "Бампер",
+  "contactMethod": "call",
+  "comment": "Удобно после 18:00",
+  "source": "landing"
+}
+```
+
+## Проверки
+
+```bash
+npm run lint
+npm run build
+```
+
+В проекте есть базовая защита от пустых заявок, honeypot-поле и ограничение частоты отправки с одного IP.

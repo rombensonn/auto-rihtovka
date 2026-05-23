@@ -1,0 +1,36 @@
+{
+  "name": "Авто_рихтовка Industrial",
+  "colors": {
+    "background": "#090B0F",
+    "graphite": "#10141A",
+    "graphiteSoft": "#171D25",
+    "graphiteRail": "#222A34",
+    "paper": "#F4EFE3",
+    "paperMuted": "#DED3BF",
+    "steel": "#8E9AA7",
+    "steelDark": "#4D5968",
+    "amber": "#F59E0B",
+    "amberDark": "#B96500",
+    "electric": "#2DD4FF",
+    "oxide": "#B45309",
+    "ink": "#111317"
+  },
+  "radius": {
+    "card": "8px",
+    "control": "8px",
+    "pill": "999px"
+  },
+  "motion": {
+    "micro": "180ms ease-out",
+    "section": "320ms ease-out",
+    "respectReducedMotion": true
+  },
+  "visualLanguage": [
+    "industrial graphite surfaces",
+    "safety amber CTA accents",
+    "electric blue inspection-light accents",
+    "metal plate cards",
+    "thin rail lines and diagnostic grids",
+    "photographic workshop atmosphere, not racing style"
+  ]
+}
